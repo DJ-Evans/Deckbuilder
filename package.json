@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^20.2.4",
+    "@angular/cli": "^19.2.13"
+  }
+}

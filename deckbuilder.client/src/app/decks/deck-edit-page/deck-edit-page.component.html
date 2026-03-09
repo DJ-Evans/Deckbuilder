@@ -1,0 +1,179 @@
+<div class="content mt-10">
+  <form class="max-w-md mx-auto">
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        type="deckName"
+        name="floating_deckName"
+        id="floating_deckName"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        required
+      />
+      <label
+        for="floating_deckName"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Deck Name</label
+      >
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        type="format"
+        name="floating_format"
+        id="floating_format"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        required
+      />
+      <label
+        for="floating_format"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Format</label
+      >
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        type="format"
+        name="repeat_format"
+        id="floating_repeat_format"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        required
+      />
+      <label
+        for="floating_repeat_format"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Commander</label
+      >
+    </div>
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <div class="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="floating_colorIdentity"
+          id="floating_colorIdentity"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required
+        />
+        <label
+          for="floating_colorIdentity"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >Colors</label
+        >
+      </div>
+    </div>
+  </form>
+  <div class="mt-5">
+    <app-card-search (cardClicked)="addCard($event)"></app-card-search>
+    <div
+      class="block w-3xl mt-5 mx-auto p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
+      <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+        Card List
+      </h2>
+      <div [hidden]="!instants?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Instant
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of instants">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!sorceries?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Sorceries
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of sorceries">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!creatures?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Creatures
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of creatures">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!artifacts?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Artifacts
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of artifacts">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!enchantments?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Enchantments
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of enchantments">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!planeswalkers?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Planeswalkers
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of planeswalkers">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <div [hidden]="!lands?.length">
+        <h3
+          class="mb-2 text-lg underline font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Lands
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"
+        >
+          <li *ngFor="let card of lands">{{ card.cardName }}</li>
+        </ul>
+      </div>
+      <!-- <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-white"> -->
+      <!-- <li *ngFor="let card of cardList">{{ card.cardName }}</li> -->
+      <!-- </ul> -->
+    </div>
+  </div>
+  <div
+    class="flex justify-center mt-1 p-1 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+  >
+    <button
+      type="button"
+      class="m-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="m-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
